@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="346dp"
-        android:layout_height="649dp"
+        android:layout_width="334dp"
+        android:layout_height="664dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,33 +18,81 @@
         app:layout_constraintWidth_percent="0.8">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/registerTextView"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:text="회원가입"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="24sp" />
 
-        <EditText
-            android:id="@+id/editTextText4"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="Name" />
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/InputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:capitalize="none"
+                android:hint="이름" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextPhone"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="59dp"
+                android:layout_height="28dp"
+                android:layout_weight="1"
+                android:text="010"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/dash"
                 android:layout_width="wrap_content"
-                android:layout_height="66dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="-"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/inputPhone2"
+                android:layout_width="76dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
                 android:ems="10"
-                android:hint="Enter your phone number"
-                android:inputType="phone" />
+                android:hint="1234(예)"
+                android:inputType="phone"
+                android:maxLength="4"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/dash2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="-"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/inputPhone3"
+                android:layout_width="76dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="5678(예)"
+                android:inputType="phone"
+                android:maxLength="4"
+                android:textAlignment="center" />
 
             <Button
                 android:id="@+id/button2"
@@ -56,74 +104,142 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="70dp"
             android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextText3"
-                android:layout_width="wrap_content"
-                android:layout_height="62dp"
-                android:ems="10"
-                android:inputType="text"
-                android:hint="아이디" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/inputID"
+                android:layout_width="208dp"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="197dp"
+                    android:layout_height="wrap_content"
+                    android:capitalize="none"
+                    android:hint="아이디" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/duplicateID"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="DialogClick"
                 android:text="중복확인" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/editTextTextPassword"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:ems="10"
-            android:hint="Enter your Password"
-            android:inputType="textPassword"
-            />
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPW"
+                android:layout_width="330dp"
+                android:layout_height="70dp"
+                android:capitalize="none"
+                android:hint="비밀번호" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPW2"
+                android:layout_width="330dp"
+                android:layout_height="70dp"
+                android:capitalize="none"
+                android:hint="비밀번호 재입력" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/inputEmail"
             android:layout_width="match_parent"
-            android:layout_height="76dp"
+            android:layout_height="70dp"
             android:ems="10"
-            android:hint="Enter your Password"
-            android:inputType="textPassword" />
+            android:hint="이메일을 입력하세요\n(예: ex1234@naver.com)"
+            android:inputType="textEmailAddress" />
 
-        <EditText
-            android:id="@+id/editTextTextEmailAddress"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:ems="10"
-            android:hint="Enter your Email"
-            android:inputType="textEmailAddress"
-            android:visibility="visible"
-            tools:visibility="visible" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/editTextText5"
-            android:layout_width="match_parent"
-            android:layout_height="73dp"
-            android:ems="10"
-            android:hint="아기 태명"
-            android:inputType="text" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:capitalize="none"
+                android:hint="아기 태명"
+                android:maxLength="10"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextDate"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="61dp"
-            android:ems="10"
-            android:inputType="date"
-            android:hint="출생예정일" />
+            android:layout_height="70dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:ems="10"
+                android:hint="2024"
+                android:inputType="date"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/dash3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:height="65dp"
+                android:gravity="center"
+                android:text="-"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextDate2"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="01"
+                android:inputType="date"
+                android:maxLength="2"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/dash4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:height="65dp"
+                android:gravity="center"
+                android:text="-"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextDate3"
+                android:layout_width="80dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="01"
+                android:inputType="date"
+                android:maxLength="2"
+                android:textAlignment="center" />
+        </LinearLayout>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/signUp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="가입" />
+            android:layout_height="60dp"
+            android:text="가입하기"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
