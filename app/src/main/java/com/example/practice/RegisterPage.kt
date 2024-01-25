@@ -20,6 +20,8 @@ class RegisterPage : AppCompatActivity() {
 
 
         duplicateID.setOnClickListener {
+            // DB에서 중복 아이디가 있는지 확인하는 코드 작성 필요
+
 //            val message = true
             val message = false
             if (message) {
@@ -37,7 +39,6 @@ class RegisterPage : AppCompatActivity() {
         }
     }
 
-    // 함수에 매개변수 추가
     fun NoDuplicateDialog(message: String): AlertDialog.Builder {
         val builder = AlertDialog.Builder(this)
         builder

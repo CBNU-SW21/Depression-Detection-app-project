@@ -1,37 +1,37 @@
 package com.example.practice
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.CalendarView
 import android.widget.ListView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.text.SimpleDateFormat
+import java.util.Date
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val TAG_Diary = "ic_diary"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CalendarFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CalendarFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var bottomNavActivity: BottomNavActivity
+    private lateinit var listView: ListView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        activity?.let {
+            if (it is BottomNavActivity) {
+                bottomNavActivity = it
+            } else {
+                throw IllegalStateException("Activity must implement BottomNavActivity")
+            }
         }
     }
-
-    private lateinit var listView: ListView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,31 +40,74 @@ class CalendarFragment : Fragment() {
         // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_calendar, container, false)
 
-        var listView = rootView.findViewById<ListView>(R.id.calendarListView)
-        val data = arrayOf("Item 1")
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, data)
-        listView.adapter = adapter
+        val addButton = rootView.findViewById<FloatingActionButton>(R.id.addButton)
+        val todayDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
+        val clickedDate = rootView.findViewById<CalendarView>(R.id.calendarView)
+        var selectedDate = todayDate
+
+        listView = rootView.findViewById(R.id.calendarListView)
+
+        updateListView(todayDate, addButton) // 오늘 날짜로 초기화
+
+        clickedDate.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            selectedDate = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth)
+            Log.i("SelectedDate", selectedDate)
+
+            updateListView(selectedDate, addButton)
+
+        }
+
+        addButton.setOnClickListener {
+            try {
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                val writeDiaryFragment = WriteDiaryFragment.newInstance(bottomNavActivity, selectedDate)
+                transaction.replace(R.id.mainFrameLayout, writeDiaryFragment)
+                bottomNavActivity.setSelectedNavItem(R.id.ic_diary)
+                transaction.addToBackStack(null)
+                transaction.commit()
+
+                // 작성한 값 전달 코드 추가 필요
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
 
         return rootView
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CalendarFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CalendarFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun updateListView(selectedDate: String, addButton: FloatingActionButton) {
+        val diaryEntries = test()
+        val diaryList: MutableList<String> = mutableListOf()
+
+        for (diaryEntry in diaryEntries) {
+            val date = diaryEntry.date
+
+            if (date == selectedDate) {
+                val contentPreview = if (diaryEntry.content.length > 30) {
+                    "${diaryEntry.content.substring(0, 30)}..."
+                } else {
+                    diaryEntry.content
                 }
+                val tmp = "${diaryEntry.title}\n$contentPreview"
+                diaryList.add(tmp)
+                addButton.isEnabled = false
             }
+        }
+
+        if (diaryList.isEmpty()) {
+            diaryList.add("작성된 일기가 없습니다.")
+            addButton.isEnabled = true
+        }
+
+        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, diaryList)
+        listView.adapter = adapter
+    }
+
+    companion object {
+        fun newInstance(bottomNavActivity: BottomNavActivity): CalendarFragment {
+            val fragment = CalendarFragment()
+            fragment.bottomNavActivity = bottomNavActivity
+            return fragment
+        }
     }
 }
