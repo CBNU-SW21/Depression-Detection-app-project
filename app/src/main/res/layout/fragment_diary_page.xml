@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DiaryFragment"
-    android:id="@+id/fragment_diary_page">
+    android:id="@+id/fragment_diary_page"
+    android:background="@color/white"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -38,10 +40,12 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/diary_page_emotion"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:clickable="false"
+                android:focusable="false"
                 android:gravity="center"
                 android:text="감정"
                 android:textAlignment="center"
@@ -69,22 +73,27 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/diary_title"
+            android:id="@+id/diary_page_title"
             android:layout_width="match_parent"
             android:layout_height="57dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
+            android:clickable="false"
+            android:contextClickable="false"
             android:ems="10"
+            android:focusable="false"
             android:hint="제목을 입력하세요!"
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/diary_content"
+            android:id="@+id/diary_page_content"
             android:layout_width="match_parent"
             android:layout_height="371dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/diary_content_border"
+            android:clickable="false"
+            android:focusable="false"
             android:gravity="start"
             android:hint="오늘의 일기를 적어보세요"
             android:inputType="textMultiLine"
@@ -96,10 +105,10 @@
             android:paddingEnd="5dp"
             android:paddingRight="5dp"
             android:paddingBottom="5dp"
-            android:scrollbars="vertical"/>
+            android:scrollbars="vertical" />
 
         <TextView
-            android:id="@+id/user_word_count"
+            android:id="@+id/diary_page_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"

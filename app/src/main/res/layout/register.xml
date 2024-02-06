@@ -30,7 +30,7 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/InputName"
+                android:id="@+id/InputName_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:capitalize="none"
@@ -43,7 +43,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/inputPhone1_register"
                 android:layout_width="59dp"
                 android:layout_height="28dp"
                 android:layout_weight="1"
@@ -62,7 +62,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/inputPhone2"
+                android:id="@+id/inputPhone2_register"
                 android:layout_width="76dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"
@@ -84,7 +84,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/inputPhone3"
+                android:id="@+id/inputPhone3_register"
                 android:layout_width="76dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"
@@ -108,19 +108,18 @@
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputID"
+                android:id="@+id/inputID_register"
                 android:layout_width="208dp"
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="197dp"
                     android:layout_height="wrap_content"
-                    android:capitalize="none"
                     android:hint="아이디" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/duplicateID"
+                android:id="@+id/duplicateID_register"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -133,10 +132,9 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputPW"
+                android:id="@+id/inputPW_register"
                 android:layout_width="330dp"
                 android:layout_height="70dp"
-                android:capitalize="none"
                 android:hint="비밀번호" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,15 +143,14 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/inputPW2"
+                android:id="@+id/inputPW2_register"
                 android:layout_width="330dp"
                 android:layout_height="70dp"
-                android:capitalize="none"
                 android:hint="비밀번호 재입력" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/inputEmail_register"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:ems="10"
@@ -179,7 +176,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/editTextDate"
+                android:id="@+id/year_register"
                 android:layout_width="80dp"
                 android:layout_height="70dp"
                 android:ems="10"
@@ -199,7 +196,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDate2"
+                android:id="@+id/month_register"
                 android:layout_width="80dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"
@@ -221,7 +218,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/editTextDate3"
+                android:id="@+id/day_register"
                 android:layout_width="80dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"

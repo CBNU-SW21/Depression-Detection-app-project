@@ -72,10 +72,11 @@ class BottomNavActivity : AppCompatActivity(), Serializable  {
         if (existingFragment != null) {
             // 이미 추가된 Fragment라면 아무 작업도 하지 않음
             fragTransaction.replace(R.id.mainFrameLayout, fragment, tag)
-                .addToBackStack(null)
+//                .addToBackStack(null)
         } else {
             // Fragment가 없으면 추가
-            fragTransaction.add(R.id.mainFrameLayout, fragment, tag).addToBackStack(null)
+            fragTransaction.add(R.id.mainFrameLayout, fragment, tag)
+//                .addToBackStack(null)
 
             // 기존 Fragment 숨김 처리
             val calendar = manager.findFragmentByTag(TAG_CALENDAR)
@@ -108,8 +109,6 @@ class BottomNavActivity : AppCompatActivity(), Serializable  {
             if (settings != null) {
                 fragTransaction.hide(settings)
             }
-
-
 
             // 해당 태그에 따라서 show 처리
             when (tag) {

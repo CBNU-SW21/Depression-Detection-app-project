@@ -1,6 +1,7 @@
 package com.example.practice
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,14 +16,15 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class DiaryFragment : Fragment() {
-    private var selectedDate: String? = null
+    private var selectedDate: String? = ARG_SELECTED_DATE
     private lateinit var bottomNavActivity: BottomNavActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             selectedDate = it.getString(DiaryFragment.ARG_SELECTED_DATE)
-            bottomNavActivity = requireActivity() as BottomNavActivity
+            bottomNavActivity = it.getSerializable(DiaryFragment.ARG_BOTTOM_NAV_ACTIVITY) as? BottomNavActivity
+                ?: throw IllegalArgumentException("BottomNavActivity must not be null")
         }
     }
 
@@ -34,30 +36,60 @@ class DiaryFragment : Fragment() {
         var rewriteButton = rootView.findViewById<Button>(R.id.rewrite_button)
         var diaryDate = rootView.findViewById<TextView>(R.id.diary_date)
         var deleteButton = rootView.findViewById<Button>(R.id.delete_button)
+        var diaryTitle = rootView.findViewById<TextView>(R.id.diary_page_title)
+        var diaryContent = rootView.findViewById<TextView>(R.id.diary_page_content)
+        var diaryEmotion = rootView.findViewById<TextView>(R.id.diary_page_emotion)
+        var diaryLength = rootView.findViewById<TextView>(R.id.diary_page_count)
+
+//        bottomNavActivity = requireActivity() as BottomNavActivity
 
         var todayDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
-
-//        bottomNavActivity.setSelectedNavItem(R.id.ic_diary)
+        Log.i("selectedDate???", selectedDate.toString())
 
         if (selectedDate.isNullOrEmpty()) {
             diaryDate.text = todayDate
+
+            // test 파일로 작성, 추후 DB에 담긴 일기로 가져와야 함
+            for (diaryEntry in test()) {
+                val date = diaryEntry.date
+
+                if (date == todayDate) {
+                    diaryTitle.text = diaryEntry.title
+                    diaryContent.text = diaryEntry.content
+                    diaryEmotion.text = diaryEntry.emotion
+                    diaryLength.text = diaryEntry.content.length.toString() + "/1000"
+                }
+            }
         } else {
             diaryDate.text = selectedDate.toString()
+
+            // test 파일로 작성, 추후 DB에 담긴 일기로 가져와야 함
+            for (diaryEntry in test()) {
+                val date = diaryEntry.date
+
+                if (date == selectedDate) {
+                    diaryTitle.text = diaryEntry.title
+                    diaryContent.text = diaryEntry.content
+                    diaryEmotion.text = diaryEntry.emotion
+                    diaryLength.text = diaryEntry.content.length.toString() + "/1000"
+                }
+            }
         }
 
 
+        // 삭제버튼 동작 이벤트 작성
+//        deleteButton.setOnClickListener {
+//            try {
+//
+//            } catch () {}
+//        }
         rewriteButton.setOnClickListener {
             try {
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
                 val writeDiaryFragment = WriteDiaryFragment.newInstance(bottomNavActivity, selectedDate)
-//                val writeDiaryFragment = WriteDiaryFragment.newInstance( selectedDate)
-
                 transaction.replace(R.id.mainFrameLayout, writeDiaryFragment)
-//                bottomNavActivity.setSelectedNavItem(R.id.ic_diary)
-                transaction.addToBackStack(null)
+//                transaction.addToBackStack(null)
                 transaction.commit()
-
-                // 작성한 값 전달 코드 추가 필요
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -68,12 +100,14 @@ class DiaryFragment : Fragment() {
 
     companion object {
         private const val ARG_SELECTED_DATE = "selected_date"
+        private const val ARG_BOTTOM_NAV_ACTIVITY = "bottom_nav_activity"
 
         @JvmStatic
-        fun newInstance(selectedDate: String?): DiaryFragment {
+        fun newInstance(bottomNavActivity: BottomNavActivity, selectedDate: String?): DiaryFragment {
             return DiaryFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_SELECTED_DATE, selectedDate.orEmpty())
+                    putSerializable(DiaryFragment.ARG_BOTTOM_NAV_ACTIVITY, bottomNavActivity)
                 }
             }
         }

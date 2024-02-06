@@ -37,7 +37,6 @@ class CalendarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val rootView = inflater.inflate(R.layout.fragment_calendar, container, false)
 
         val addButton = rootView.findViewById<FloatingActionButton>(R.id.addButton)
@@ -49,12 +48,14 @@ class CalendarFragment : Fragment() {
 
         updateListView(todayDate, addButton) // 오늘 날짜로 초기화
 
+
+        // 캘린더 검색기능 추가해야 함. - 검색 페이지 추가해야할지 ..?
+
         clickedDate.setOnDateChangeListener { _, year, month, dayOfMonth ->
             selectedDate = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth)
             Log.i("SelectedDate", selectedDate)
 
             updateListView(selectedDate, addButton)
-
         }
 
         addButton.setOnClickListener {
@@ -63,10 +64,25 @@ class CalendarFragment : Fragment() {
                 val writeDiaryFragment = WriteDiaryFragment.newInstance(bottomNavActivity, selectedDate)
                 transaction.replace(R.id.mainFrameLayout, writeDiaryFragment)
                 bottomNavActivity.setSelectedNavItem(R.id.ic_diary)
-                transaction.addToBackStack(null)
+//                transaction.addToBackStack(null)
                 transaction.commit()
 
-                // 작성한 값 전달 코드 추가 필요
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val selectedDiary = parent.getItemAtPosition(position) as String
+            Log.i("ListView", "Item clicked: $selectedDiary")
+
+            try {
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                val diaryFragment = DiaryFragment.newInstance(bottomNavActivity, selectedDate)
+                transaction.replace(R.id.mainFrameLayout, diaryFragment)
+                bottomNavActivity.setSelectedNavItem(R.id.ic_diary)
+                transaction.addToBackStack(null)
+                transaction.commit()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -90,7 +106,7 @@ class CalendarFragment : Fragment() {
                 }
                 val tmp = "${diaryEntry.title}\n$contentPreview"
                 diaryList.add(tmp)
-                addButton.isEnabled = false
+                addButton.visibility = View.GONE
             }
         }
 

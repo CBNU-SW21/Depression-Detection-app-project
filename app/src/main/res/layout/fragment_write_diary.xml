@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DiaryFragment"
-    android:id="@+id/fragment_write_diary">
+    android:id="@+id/fragment_write_diary"
+    android:background="@color/white"
+    >
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -38,7 +40,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/diary_emotion"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
