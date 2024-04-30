@@ -33,19 +33,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:maxLines="1"
                 android:hint="아이디"
-                android:id="@+id/userInputID_findPW"/>
+                android:id="@+id/findPW_ID"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="107dp"
-            android:layout_marginBottom="15dp"
-            android:ems="10"
-            android:hint="이메일을 입력하세요\n(예: ex1234@naver.com)"
-            android:inputType="textEmailAddress"
-            android:paddingBottom="15dp"
-            android:id="@+id/userInputEmail_findPW"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/findPW_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:hint="이메일" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="match_parent"
@@ -62,6 +66,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
+                android:maxLines="1"
                 android:hint="인증번호"
                 android:id="@+id/userInputNum_findPW"/>
 

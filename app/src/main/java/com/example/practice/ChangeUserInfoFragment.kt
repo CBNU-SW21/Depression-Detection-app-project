@@ -12,10 +12,6 @@ import android.widget.Button
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class ShowDialog(context: Context) {
-    private val dialog = Dialog(context)
-}
-
 class ChangeUserInfoFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
@@ -35,7 +31,6 @@ class ChangeUserInfoFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         var rootView =  inflater.inflate(R.layout.fragment_change_user_info, container, false)
 
         val changePWBtn = rootView.findViewById<Button>(R.id.changePW)
@@ -72,6 +67,18 @@ class ChangeUserInfoFragment : Fragment() {
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
                 val changeDDayFragment = ChangeDDayFragment.newInstance("","")
                 transaction.replace(R.id.mainFrameLayout, changeDDayFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
+        changeEmail.setOnClickListener {
+            try {
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                val changeEmailFragment = ChangeEmailFragment.newInstance("","")
+                transaction.replace(R.id.mainFrameLayout, changeEmailFragment)
                 transaction.addToBackStack(null)
                 transaction.commit()
             } catch (e: Exception) {

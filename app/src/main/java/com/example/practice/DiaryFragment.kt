@@ -41,8 +41,6 @@ class DiaryFragment : Fragment() {
         var diaryEmotion = rootView.findViewById<TextView>(R.id.diary_page_emotion)
         var diaryLength = rootView.findViewById<TextView>(R.id.diary_page_count)
 
-//        bottomNavActivity = requireActivity() as BottomNavActivity
-
         var todayDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
         Log.i("selectedDate???", selectedDate.toString())
 
@@ -78,17 +76,18 @@ class DiaryFragment : Fragment() {
 
 
         // 삭제버튼 동작 이벤트 작성
-//        deleteButton.setOnClickListener {
-//            try {
-//
-//            } catch () {}
-//        }
+        deleteButton.setOnClickListener {
+            try {
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
         rewriteButton.setOnClickListener {
             try {
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
                 val writeDiaryFragment = WriteDiaryFragment.newInstance(bottomNavActivity, selectedDate)
                 transaction.replace(R.id.mainFrameLayout, writeDiaryFragment)
-//                transaction.addToBackStack(null)
                 transaction.commit()
             } catch (e: Exception) {
                 e.printStackTrace()

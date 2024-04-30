@@ -30,10 +30,10 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/InputName_register"
+                android:id="@+id/inputName_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:capitalize="none"
+                android:maxLines="1"
                 android:hint="이름" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +95,7 @@
                 android:textAlignment="center" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/validate_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -105,16 +105,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputID_register"
                 android:layout_width="208dp"
                 android:layout_height="match_parent">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="197dp"
                     android:layout_height="wrap_content"
+                    android:id="@+id/inputID_register"
+                    android:maxLines="1"
                     android:hint="아이디" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,12 +131,15 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputPW_register"
                 android:layout_width="330dp"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
                 android:hint="비밀번호" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -145,17 +150,24 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/inputPW2_register"
                 android:layout_width="330dp"
-                android:layout_height="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:maxLines="1"
                 android:hint="비밀번호 재입력" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/inputEmail_register"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
-            android:hint="이메일을 입력하세요\n(예: ex1234@naver.com)"
-            android:inputType="textEmailAddress" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputEmail_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:hint="이메일" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -164,11 +176,18 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:capitalize="none"
                 android:hint="아기 태명"
                 android:maxLength="10"
+                android:id="@+id/inputBabyName_register"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="생년월일" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -177,7 +196,7 @@
 
             <EditText
                 android:id="@+id/year_register"
-                android:layout_width="80dp"
+                android:layout_width="68dp"
                 android:layout_height="70dp"
                 android:ems="10"
                 android:hint="2024"
@@ -191,13 +210,13 @@
                 android:layout_weight="1"
                 android:height="65dp"
                 android:gravity="center"
-                android:text="-"
+                android:text="년"
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/month_register"
-                android:layout_width="80dp"
+                android:layout_width="59dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"
                 android:ems="10"
@@ -213,13 +232,13 @@
                 android:layout_weight="1"
                 android:height="65dp"
                 android:gravity="center"
-                android:text="-"
+                android:text="월"
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/day_register"
-                android:layout_width="80dp"
+                android:layout_width="47dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"
                 android:ems="10"
@@ -227,6 +246,16 @@
                 android:inputType="date"
                 android:maxLength="2"
                 android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="일"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <Button

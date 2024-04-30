@@ -17,9 +17,6 @@ import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.Date
 
-private const val ARG_SELECTED_DATE = "selected_date"
-private const val ARG_BOTTOM_NAV_ACTIVITY = "bottom_nav_activity"
-
 class WriteDiaryFragment : Fragment() {
     private var selectedDateWD: String? = null
     private lateinit var bottomNavActivity: BottomNavActivity

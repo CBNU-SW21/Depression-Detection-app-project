@@ -9,7 +9,6 @@
     tools:context=".CalendarFragment"
     android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,6 +23,7 @@
             android:textSize="24sp" />
 
         <android.widget.SearchView
+            android:id="@+id/search_calendar"
             android:layout_width="match_parent"
             android:layout_height="73dp"
             android:layout_marginStart="30dp"

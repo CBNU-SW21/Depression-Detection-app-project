@@ -2,6 +2,7 @@ package com.example.practice
 
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.CalendarView
 import android.widget.ListView
+import android.widget.SearchView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -16,9 +18,6 @@ import java.util.Date
 private const val TAG_Diary = "ic_diary"
 
 class CalendarFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
-
     private lateinit var bottomNavActivity: BottomNavActivity
     private lateinit var listView: ListView
 
@@ -42,14 +41,52 @@ class CalendarFragment : Fragment() {
         val addButton = rootView.findViewById<FloatingActionButton>(R.id.addButton)
         val todayDate = SimpleDateFormat("yyyy-MM-dd").format(Date())
         val clickedDate = rootView.findViewById<CalendarView>(R.id.calendarView)
+        var sv = rootView.findViewById<SearchView>(R.id.search_calendar)
         var selectedDate = todayDate
 
         listView = rootView.findViewById(R.id.calendarListView)
-
         updateListView(todayDate, addButton) // 오늘 날짜로 초기화
 
+        sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Log.i("SearchView", "Query submitted: $query")
 
-        // 캘린더 검색기능 추가해야 함. - 검색 페이지 추가해야할지 ..?
+                // 엔터 키가 눌렸을 때의 처리
+                query?.let {
+                    try {
+                        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                        val searchFragment = SearchFragment.newInstance(bottomNavActivity, query)
+                        transaction.replace(R.id.mainFrameLayout, searchFragment)
+                        // transaction.addToBackStack(null)
+                        transaction.commit()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Log.i("SearchView", "Query changed: $newText")
+                return true
+            }
+        })
+
+
+        sv.setOnKeyListener { _, keyCode, event ->
+            if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                // 엔터 키가 눌렸을 때의 처리
+                val query = sv.query.toString()
+                Log.i("SearchView", "Enter key pressed with query: $query")
+
+                sv.onActionViewCollapsed()
+                sv.clearFocus()
+                handleSearchQuery(query)
+
+                return@setOnKeyListener true
+            }
+            return@setOnKeyListener false
+        }
 
         clickedDate.setOnDateChangeListener { _, year, month, dayOfMonth ->
             selectedDate = String.format("%04d-%02d-%02d", year, month + 1, dayOfMonth)
@@ -72,7 +109,7 @@ class CalendarFragment : Fragment() {
             }
         }
 
-        listView.setOnItemClickListener { parent, view, position, id ->
+        listView.setOnItemClickListener { parent, _, position, _ ->
             val selectedDiary = parent.getItemAtPosition(position) as String
             Log.i("ListView", "Item clicked: $selectedDiary")
 
@@ -117,6 +154,19 @@ class CalendarFragment : Fragment() {
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, diaryList)
         listView.adapter = adapter
+    }
+
+    private fun handleSearchQuery(query: String) {
+        Log.i("SearchView", "Handling search query: $query")
+        try {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            val searchFragment = SearchFragment.newInstance(bottomNavActivity,query)
+            transaction.replace(R.id.mainFrameLayout, searchFragment)
+            // transaction.addToBackStack(null)
+            transaction.commit()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     companion object {

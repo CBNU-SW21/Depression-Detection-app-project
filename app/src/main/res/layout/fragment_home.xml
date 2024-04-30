@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="209dp"
             android:layout_margin="30dp"
-            tools:src="@tools:sample/avatars" />
+            android:src="@drawable/default_img" />
 
         <TextView
             android:id="@+id/baby_name_home"
@@ -76,10 +76,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:paddingStart="5dp"
                 android:text="일"
-                android:textAlignment="textStart"
+                android:gravity="center"
                 android:textSize="20sp" />
 
         </LinearLayout>

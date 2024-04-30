@@ -71,34 +71,41 @@
             android:hint="제목을 입력하세요!"
             android:inputType="text" />
 
-        <EditText
-            android:id="@+id/diary_content"
-            android:layout_width="match_parent"
-            android:layout_height="371dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:background="@drawable/diary_content_border"
-            android:gravity="start"
-            android:hint="오늘의 일기를 적어보세요"
-            android:inputType="textMultiLine"
-            android:maxLength="1000"
-            android:padding="5dp"
-            android:paddingStart="5dp"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="5dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="5dp"
-            android:scrollbars="vertical"/>
-
-        <TextView
-            android:id="@+id/user_word_count"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:text="0/1000"
-            android:textAlignment="viewEnd" />
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/diary_content"
+                android:layout_width="match_parent"
+                android:layout_height="371dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/diary_content_border"
+                android:gravity="start"
+                android:hint="오늘의 일기를 적어보세요"
+                android:inputType="textMultiLine"
+                android:maxLength="1000"
+                android:padding="5dp"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:scrollbars="vertical" />
+
+            <TextView
+                android:id="@+id/user_word_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:scrollbars="vertical"
+                android:text="0/1000"
+                android:textAlignment="viewEnd" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -112,21 +119,21 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_add" />
+                android:src="@drawable/add_photo" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_add" />
+                android:src="@drawable/add_photo" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:src="@drawable/ic_add" />
+                android:src="@drawable/add_photo" />
 
         </LinearLayout>
 

@@ -30,21 +30,26 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/findID_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
+                android:maxLines="1"
                 android:hint="이름" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/findId_inputEmail"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="107dp"
-            android:layout_marginBottom="30dp"
-            android:ems="10"
-            android:hint="이메일을 입력하세요\n(예: ex1234@naver.com)"
-            android:inputType="textEmailAddress"
-            android:paddingBottom="15dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/findID_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:hint="이메일" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/findId_button"
