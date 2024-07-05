@@ -1,4 +1,4 @@
-package com.example.practice
+package com.example.diaryapp
 
 import android.os.Bundle
 import android.util.Log

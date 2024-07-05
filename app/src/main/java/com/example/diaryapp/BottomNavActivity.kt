@@ -1,10 +1,10 @@
-package com.example.practice
+package com.example.diaryapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.example.practice.databinding.HomeBinding
+import com.example.diaryapp.databinding.HomeBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.io.Serializable

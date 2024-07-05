@@ -1,4 +1,4 @@
-package com.example.practice
+package com.example.diaryapp
 
 data class Diary(
     val title: String,

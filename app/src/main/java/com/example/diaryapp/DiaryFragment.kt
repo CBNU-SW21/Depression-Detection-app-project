@@ -1,4 +1,4 @@
-package com.example.practice
+package com.example.diaryapp
 
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.Date
