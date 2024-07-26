@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +38,17 @@ class CommunityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_community, container, false)
+        var rootView =  inflater.inflate(R.layout.fragment_community, container, false)
+        var drawerLayout = rootView.findViewById<DrawerLayout>(R.id.drawerLayout)
+        var imgMenu = rootView.findViewById<ImageView>(R.id.imageMenu)
+
+        imgMenu.setOnClickListener{
+            drawerLayout.openDrawer(GravityCompat.START)
+        }
+
+        var naviView = rootView.findViewById<NavigationView>(R.id.navigationView)
+        naviView.itemIconTintList = null
+        return rootView
     }
 
     companion object {
