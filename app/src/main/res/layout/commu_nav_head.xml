@@ -4,7 +4,7 @@
     android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
-    android:background="@color/white">
+    android:background="@color/material_dynamic_primary50">
 
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/fan"
@@ -13,6 +13,7 @@
         android:scaleType="centerInside"
         android:src="@drawable/default_img"
         android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:riv_oval="false"/>
@@ -42,7 +43,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="User name"
         android:textColor="@color/black"
         android:textSize="28sp"

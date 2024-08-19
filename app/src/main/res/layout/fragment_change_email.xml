@@ -22,8 +22,9 @@
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:text="이메일 변경"
+            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/newEmail"
@@ -36,12 +37,14 @@
             android:hint="변경할 이메일을 입력하세요\n(예: abc123@gmail.com)"
             android:inputType="textEmailAddress" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/change_email_button"
-            android:layout_width="108dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="30dp"
+            android:background="@drawable/btn1"
+            android:padding="5dp"
             android:text="변경하기" />
 
     </LinearLayout>

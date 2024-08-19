@@ -22,8 +22,9 @@
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:text="출산 예정일 변경"
+            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
 
         <LinearLayout
@@ -97,12 +98,15 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/change_change_d_day_button"
             android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginEnd="30dp"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn1"
             android:text="변경하기" />
 
     </LinearLayout>
