@@ -22,8 +22,9 @@
             android:layout_marginBottom="15dp"
             android:gravity="center"
             android:text="태명 변경"
+            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/newBabyname"
@@ -36,11 +37,12 @@
             android:hint="변경할 태명을 입력하세요"
             android:inputType="text" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/change_baby_name_button"
             android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:background="@drawable/btn1"
             android:layout_marginEnd="30dp"
             android:text="변경하기" />
 

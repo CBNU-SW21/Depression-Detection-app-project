@@ -9,7 +9,6 @@
     android:background="@color/white"
     >
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="727dp"
@@ -49,12 +48,12 @@
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/save_diary"
                 android:layout_width="60dp"
+                android:background="@drawable/btn1"
                 android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="저장"
                 android:textAlignment="center"
@@ -87,13 +86,7 @@
                 android:hint="오늘의 일기를 적어보세요"
                 android:inputType="textMultiLine"
                 android:maxLength="1000"
-                android:padding="5dp"
-                android:paddingStart="5dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="5dp"
-                android:paddingBottom="5dp"
+                android:padding="10dp"
                 android:scrollbars="vertical" />
 
             <TextView
@@ -125,15 +118,13 @@
                 android:id="@+id/imageView2"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/add_photo" />
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:src="@drawable/add_photo" />
+                android:layout_weight="1"/>
 
         </LinearLayout>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns="http://www.w3.org/1999/XSL/Transform">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/ic_calendar"
         android:title="캘린더"

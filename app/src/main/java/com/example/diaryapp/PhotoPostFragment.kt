@@ -11,10 +11,18 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
+// TODO: Rename parameter arguments, choose names that match
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class CommunityFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [PhotoPostFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class PhotoPostFragment : Fragment() {
+    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -31,52 +39,18 @@ class CommunityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootView =  inflater.inflate(R.layout.fragment_community, container, false)
+        var rootView = inflater.inflate(R.layout.fragment_photo_post, container, false)
+
         var drawerLayout = rootView.findViewById<DrawerLayout>(R.id.drawerLayout)
         var imgMenu = rootView.findViewById<ImageView>(R.id.imageMenu)
-
-        val moreHotPostBtn = rootView.findViewById<TextView>(R.id.more_hot)
-        val morePhotoBtn = rootView.findViewById<TextView>(R.id.more_photo)
-
-        var hotTitle1 = rootView.findViewById<TextView>(R.id.hot_title1)
-        var hotTitle2 = rootView.findViewById<TextView>(R.id.hot_title2)
-        var hotTitle3 = rootView.findViewById<TextView>(R.id.hot_title3)
-
-        var photoTitle1 = rootView.findViewById<TextView>(R.id.photo_title1)
-        var photoTitle2 = rootView.findViewById<TextView>(R.id.photo_title2)
-        var photoTitle3 = rootView.findViewById<TextView>(R.id.photo_title3)
+        val addPost = rootView.findViewById<TextView>(R.id.add_post)
 
 
-        hotTitle1.setText("hot 게시판 타이틀1")
-        hotTitle2.setText("hot 게시판 타이틀2")
-        hotTitle3.setText("hot 게시판 타이틀3")
-
-        photoTitle1.setText("포토 게시판 타이틀1")
-        photoTitle2.setText("포토 게시판 타이틀2")
-        photoTitle3.setText("포토 게시판 타이틀3")
-
-        moreHotPostBtn.setOnClickListener {
-            try {
-                val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                val hotPostFragment = HotPostFragment.newInstance("","")
-                transaction.replace(R.id.mainFrameLayout, hotPostFragment)
-                transaction.commit()
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-
-        morePhotoBtn.setOnClickListener {
-            try {
-                val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                val photoPostFragment = PhotoPostFragment.newInstance("","")
-                transaction.replace(R.id.mainFrameLayout, photoPostFragment)
-                transaction.commit()
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+        addPost.setOnClickListener {
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            val writePostFragment = WritePostFragment.newInstance("","")
+            transaction.replace(R.id.mainFrameLayout, writePostFragment)
+            transaction.commit()
         }
 
         imgMenu.setOnClickListener{
@@ -111,13 +85,14 @@ class CommunityFragment : Fragment() {
             true
         }
 
+
         return rootView
     }
 
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            CommunityFragment().apply {
+            PhotoPostFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
