@@ -6,6 +6,10 @@
         android:icon="@drawable/ic_home"
         android:title="home" />
 
+    <item
+        android:id="@+id/nav_post"
+        android:icon="@drawable/ic_diary"
+        android:title="일반 게시판" />
 
     <item
         android:id="@+id/nav_photo"
@@ -14,6 +18,6 @@
 
     <item
         android:id="@+id/nav_hot"
-        android:icon="@drawable/ic_diary"
+        android:icon="@drawable/ic_bolt"
         android:title="HOT 게시판" />
 </menu>

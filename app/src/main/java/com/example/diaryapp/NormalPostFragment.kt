@@ -16,12 +16,7 @@ import com.google.android.material.navigation.NavigationView
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [PhotoPostFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class PhotoPostFragment : Fragment() {
+class NormalPostFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -39,7 +34,7 @@ class PhotoPostFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var rootView = inflater.inflate(R.layout.fragment_photo_post, container, false)
+        var rootView = inflater.inflate(R.layout.fragment_normal_post, container, false)
 
         var drawerLayout = rootView.findViewById<DrawerLayout>(R.id.drawerLayout)
         var imgMenu = rootView.findViewById<ImageView>(R.id.imageMenu)
@@ -96,9 +91,10 @@ class PhotoPostFragment : Fragment() {
     }
 
     companion object {
+        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            PhotoPostFragment().apply {
+            NormalPostFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

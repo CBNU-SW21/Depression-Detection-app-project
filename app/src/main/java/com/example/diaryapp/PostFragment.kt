@@ -12,6 +12,8 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -20,17 +22,22 @@ import java.util.Date
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class PostFragment : Fragment() {
+class PostFragment : Fragment(), CommentAdapter.OnItemClickListener {
     private var postTitleText: String? = null
     private var postContentText: String? = null
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: CommentAdapter
     private var userNameText: String? = null
+    private var writeDateText: String? = null
+    private lateinit var commentItemList: List<CommentItem>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            postTitleText = it.getString("postTitle")
-            postContentText = it.getString("postContent")
-            userNameText = it.getString("userName")
+            postTitleText = it.getString("postTitle")  // 키 이름 일치
+            postContentText = it.getString("postContent")  // 키 이름 일치
+            userNameText = it.getString("userName")  // 키 이름 일치
+            writeDateText = it.getString("writeDate")  // 키 이름 일치
         }
     }
 
@@ -51,8 +58,6 @@ class PostFragment : Fragment() {
         var writeDate = rootView.findViewById<TextView>(R.id.write_date)
         var editBtn = rootView.findViewById<Button>(R.id.edit_btn)
         var deleteBtn = rootView.findViewById<Button>(R.id.delete_btn)
-        var normalPostBtn = rootView.findViewById<RadioButton>(R.id.normal_post_btn)
-        var photoPostBtn = rootView.findViewById<RadioButton>(R.id.photo_post_btn)
         var commentBtn = rootView.findViewById<Button>(R.id.comment_submit)
         var commentInput = rootView.findViewById<EditText>(R.id.comment_input)
         var imgView = rootView.findViewById<ImageView>(R.id.imageView1)
@@ -61,6 +66,7 @@ class PostFragment : Fragment() {
         postTitle.text = postTitleText
         postContent.text = postContentText
         userNameView.text = userNameText
+        writeDate.text = writeDateText
 
 
 
@@ -73,6 +79,29 @@ class PostFragment : Fragment() {
         imgMenu.setOnClickListener{
             drawerLayout.openDrawer(GravityCompat.START)
         }
+
+
+
+        commentItemList = mutableListOf(
+            CommentItem("user1", "2024-09-01", "testeddtset"),
+            CommentItem("user2", "2024-09-01", "testeddtset2"),
+            CommentItem("user3", "2024-09-01", "testeddtset3"),
+            CommentItem("user4", "2024-09-01", "testeddtset4"),
+            CommentItem("user5", "2024-09-01", "testeddtset5"),
+
+            )
+
+        recyclerView = rootView.findViewById(R.id.comment_list)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        adapter = CommentAdapter(commentItemList, requireContext(), this)
+        recyclerView.adapter = adapter
+
+
+
+
+
+
 
         val naviView = rootView.findViewById<NavigationView>(R.id.navigationView)
         naviView.itemIconTintList = null
@@ -116,5 +145,9 @@ class PostFragment : Fragment() {
                     putString("userName", userName)
                 }
             }
+    }
+
+    override fun onItemClick(position: Int) {
+//        clickedItem = commentItemList[position]
     }
 }
