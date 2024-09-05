@@ -94,6 +94,12 @@ class CommunityFragment : Fragment() {
                     transaction.replace(R.id.mainFrameLayout, communityFragment)
                     transaction.commit()
                 }
+                R.id.nav_post -> {
+                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                    val communityFragment = NormalPostFragment.newInstance("","")
+                    transaction.replace(R.id.mainFrameLayout, communityFragment)
+                    transaction.commit()
+                }
                 R.id.nav_hot -> {
                     val transaction = requireActivity().supportFragmentManager.beginTransaction()
                     val hotPostFragment = HotPostFragment.newInstance("","")
