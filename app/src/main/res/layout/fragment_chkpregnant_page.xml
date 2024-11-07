@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".chkpregnantPage">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="임산부 인증이 필요합니다.\n임산부 인증을 위한 산모수첩을 첨부하고\n커뮤니티에서 사용할 닉네임을 설정해주세요!"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/photo"
+            android:background="@drawable/btn1"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/photo_button"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="사진 업로드"
+            android:background="@drawable/btn1"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16dp"
+            android:text="닉네임 설정" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/commu_id"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit_button"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="임산부 인증 요청"
+            android:background="@drawable/btn1"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

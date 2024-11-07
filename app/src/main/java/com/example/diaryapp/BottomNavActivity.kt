@@ -34,7 +34,14 @@ class BottomNavActivity : AppCompatActivity(), Serializable  {
             when(item.itemId) {
                 R.id.ic_calendar-> setFragment(TAG_CALENDAR, CalendarFragment())
                 R.id.ic_home -> setFragment(TAG_HOME, HomeFragment())
-                R.id.ic_community -> setFragment(TAG_Community, CommunityFragment())
+                R.id.ic_community -> {
+                    var test1 = false   // 임산부 인증 여부
+                    if (test1) {
+                        setFragment(TAG_Community, CommunityFragment())
+                    } else {
+                        setFragment(TAG_Community, ChkpregnantPage())
+                    }
+                }
                 R.id.ic_settings -> setFragment(TAG_Settings, SettingsFragment())
                 R.id.ic_diary -> {
                     if (checkDiary(todayDate)) {

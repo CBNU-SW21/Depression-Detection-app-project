@@ -8,12 +8,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.Date
+private const val TAG_Diary = "ic_home"
 
 class HomeFragment : Fragment() {
+    private lateinit var bottomNavActivity: BottomNavActivity
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-
+        activity?.let {
+            if (it is BottomNavActivity) {
+                bottomNavActivity = it
+            } else {
+                throw IllegalStateException("Activity must implement BottomNavActivity")
+            }
         }
     }
 
@@ -34,12 +41,10 @@ class HomeFragment : Fragment() {
     }
 
     companion object {
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                }
-            }
+        fun newInstance(bottomNavActivity: BottomNavActivity): HomeFragment {
+            val fragment = HomeFragment()
+            fragment.bottomNavActivity = bottomNavActivity
+            return fragment
+        }
     }
 }
