@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -34,8 +35,21 @@ class HomeFragment : Fragment() {
         var babyName = rootView.findViewById<TextView>(R.id.baby_name_home)
         var todayDate = SimpleDateFormat("yyyy-MM-dd (E)").format(Date())
 
+        var locateBtn = rootView.findViewById<Button>(R.id.locate_button)
         homeDate.text = todayDate
 
+        locateBtn.setOnClickListener {
+            try {
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                val locateFragment = LocateInfoFragment.newInstance(bottomNavActivity)
+                transaction.replace(R.id.mainFrameLayout, locateFragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
         // 회원가입시, 유저가 입력한 태명 값을 db에서 가져와야 함
         return rootView
     }

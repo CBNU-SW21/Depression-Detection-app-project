@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Practice"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:enableOnBackInvokedCallback="true">
+
+        <activity
+            android:name=".wordsPage"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -21,26 +29,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".FindIDPage">
-        </activity>
-
-        <activity
-            android:name=".FindPWPage">
-        </activity>
-
-        <activity
-            android:name=".FindIDSettingPage">
-        </activity>
-
-        <activity
-            android:name=".RegisterPage">
-        </activity>
-
+        <activity android:name=".FindIDPage" />
+        <activity android:name=".FindPWPage" />
+        <activity android:name=".FindIDSettingPage" />
+        <activity android:name=".RegisterPage" />
         <activity
             android:name=".BottomNavActivity"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
+        <meta-data
+            android:name="com.naver.maps.map.API키값"
+            android:value="API키값" />
     </application>
 
 </manifest>
