@@ -213,7 +213,7 @@ class WriteDiaryFragment : Fragment() {
             dialog.dismiss()
             try {
                 val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                val homeFragment = HomeFragment.newInstance("", "")
+                val homeFragment = HomeFragment.newInstance(bottomNavActivity)
                 transaction.replace(R.id.mainFrameLayout, homeFragment)
                 bottomNavActivity.setSelectedNavItem(R.id.ic_home)
 //                transaction.addToBackStack(null)
